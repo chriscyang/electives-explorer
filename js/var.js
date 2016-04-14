@@ -27,7 +27,7 @@ var skillGroups = {
     "experimental-methods" : "research",
 
     "computing"            : "logic",
-    "mathematics"          : "logic"
+    "mathematics"          : "logic",
 }
 
 var courseSkills = {

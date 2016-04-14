@@ -15,13 +15,15 @@ body {
 }
 
 #search-clear {
-    width: 25%;
     float: left;
+
+    width: 25%;
 }
 
 #search-submit {
-    width: 25%;
     float: right;
+
+    width: 25%;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -60,7 +62,7 @@ td {
 }
 
 .previewing {
-    background-color: rgba(214, 97, 107, 0.5) !important;
+    background-color: rgba(214, 97, 107, .5) !important;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -72,15 +74,17 @@ td {
 }
 
 #confirmation-icon {
-    padding-top: 25px;
     font-size: 70px;
+
+    padding-top: 25px;
+
     color: #008000;
 }
 
 .undo-message {
     position: absolute;
-    left: 15px;
     bottom: 12px;
+    left: 15px;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -92,7 +96,7 @@ td {
 }
 
 .progress-bar {
-    width: 0%;
+    width: 0;
 }
 
 .courses-body {
