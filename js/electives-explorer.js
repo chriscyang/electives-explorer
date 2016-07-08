@@ -1,4 +1,84 @@
 // -----------------------------------------------------------------------------
+// UI
+// -----------------------------------------------------------------------------
+
+$(document).ready(function() {
+
+    // -------------------------------------------------------------------------
+    // INITIALIZATIONS: SEARCH & RESULTS
+    // -------------------------------------------------------------------------
+
+    for (var i = 0; i < subjectAreas.length; ++i) {
+        $("#search-subject-area").append("<option data-subtext=" + '"' +
+                                         subjectAreas[i].name + '"' + ">" +
+                                         subjectAreas[i].code + "</option>");
+    }
+
+    $(".selectpicker").selectpicker({
+        actionsBox  : true,
+        liveSearch  : true,
+        showSubtext : true,
+        width       : "100%",
+    });
+
+    $(".collapse").collapse("hide");
+
+    $("#no-results-message").hide();
+    $("#results-table").hide();
+
+    // -------------------------------------------------------------------------
+    // INITIALIZATIONS: SKILL PROFILE
+    // -------------------------------------------------------------------------
+
+    initSkillProfile();
+
+    $("[id^=tab-]").css("padding", "10px");
+    $("#tab-communication").parent().addClass("active");
+
+    // -------------------------------------------------------------------------
+    // EVENTS: SEARCH & RESULTS
+    // -------------------------------------------------------------------------
+
+    $("#search-clear").click(function() {
+        $(".selectpicker").selectpicker("deselectAll");
+    });
+
+    $("#search-submit").click(function() {
+        var subj = $("#search-subject-area").val();
+        var year = $("#search-year-level").val();
+        var skills = $("#search-skills").val();
+
+        if (subj || year || skills) {
+            search(subj, year, skills);
+        } else {
+            alert("Please enter at least one of Subject Area, Year Level, and Skills!");
+        }
+    });
+
+    // -------------------------------------------------------------------------
+    // EVENTS: SKILL PROFILE
+    // -------------------------------------------------------------------------
+
+    $("a[href='#courses']").click(function() {
+        var skill = $(this).attr("for");
+        $("#courses-title").html(toTitleCase(skill));
+        $("#courses-" + skill).show();
+    });
+
+    $("#courses").on("hidden.bs.modal", function() {
+        $(".courses-body").hide();
+    });
+
+    // -------------------------------------------------------------------------
+    // EVENTS: CONFIRMATION
+    // -------------------------------------------------------------------------
+
+    $("#undo-add-course").click(function() {
+        undoAddCourse();
+    });
+});
+
+// -----------------------------------------------------------------------------
 // PRESET USER PROFILES
 // -----------------------------------------------------------------------------
 
