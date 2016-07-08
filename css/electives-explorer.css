@@ -1,0 +1,100 @@
+html,
+body {
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 5px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* SEARCH
+/* -------------------------------------------------------------------------- */
+
+#more-filters {
+    padding: 5px;
+}
+
+#search-clear {
+    width: 25%;
+    float: left;
+}
+
+#search-submit {
+    width: 25%;
+    float: right;
+}
+
+/* -------------------------------------------------------------------------- */
+/* RESULTS
+/* -------------------------------------------------------------------------- */
+
+#results {
+    border-top: 1px #ddd solid;
+}
+
+.table-container {
+    width: 100%;
+    max-width: 700px;
+}
+
+th {
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+td {
+    vertical-align: middle !important;
+}
+
+.centered-cell {
+    text-align: center;
+}
+
+.skill-label {
+    margin-right: 1px;
+}
+
+.btn-actions {
+    width: 100%;
+    margin: 2px;
+}
+
+.previewing {
+    background-color: rgba(214, 97, 107, 0.5) !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* CONFIRMATION
+/* -------------------------------------------------------------------------- */
+
+#confirmation-body {
+    text-align: center;
+}
+
+#confirmation-icon {
+    padding-top: 25px;
+    font-size: 70px;
+    color: #008000;
+}
+
+.undo-message {
+    position: absolute;
+    left: 15px;
+    bottom: 12px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* SKILL PROFILE
+/* -------------------------------------------------------------------------- */
+
+#skill-profile {
+    position: fixed;
+}
+
+.progress-bar {
+    width: 0%;
+}
+
+.courses-body {
+    display: none;
+}
