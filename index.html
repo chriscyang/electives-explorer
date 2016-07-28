@@ -1,270 +1,312 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>Electives Explorer</title>
-        <meta content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/css/bootstrap-select.min.css">
-        <link rel="stylesheet" href="http://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
-        <link rel="stylesheet" href="css/electives-explorer.css">
-    </head>
+<head>
+    <title>Electives Explorer</title>
+    <meta content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <body>
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="css/electives-explorer.css">
+</head>
 
-        <!-- SEARCH & RESULTS -->
-        <div id="left" class="col-md-7">
-            <div id="search">
-                <h2>Search</h2>
+<body>
 
-                <div class="row">
-                    <div class="col-md-12 form-group">
-                        <select id="search-skills" class="selectpicker" title="Skills" multiple>
-                            <optgroup label="Communication">
-                                <option value="writing">Writing</option>
-                                <option value="collaboration">Collaboration</option>
-                            </optgroup>
-                            <optgroup label="Culture">
-                                <option value="language">Language</option>
-                                <option value="ethnic-studies">Ethic Studies</option>
-                            </optgroup>
-                            <optgroup label="Creativity">
-                                <option value="art">Art</option>
-                                <option value="performance">Performance</option>
-                            </optgroup>
-                            <optgroup label="Research">
-                                <option value="field-methods">Field Methods</option>
-                                <option value="experimental-methods">Experimental Methods</option>
-                            </optgroup>
-                            <optgroup label="Logic">
-                                <option value="computing">Computing</option>
-                                <option value="mathematics">Mathematics</option>
-                            </optgroup>
-                        </select>
-                    </div>
+    <!-- SEARCH & RESULTS -->
+    <div id="left" class="col-md-7">
+        <div id="search">
+            <h2>Search</h2>
+
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <select id="search-skills" class="selectpicker" title="Skills" multiple>
+                        <optgroup label="Communication">
+                            <option value="writing">Writing</option>
+                            <option value="collaboration">Collaboration</option>
+                        </optgroup>
+                        <optgroup label="Culture">
+                            <option value="language">Language</option>
+                            <option value="ethnic-studies">Ethic Studies</option>
+                        </optgroup>
+                        <optgroup label="Creativity">
+                            <option value="art">Art</option>
+                            <option value="performance">Performance</option>
+                        </optgroup>
+                        <optgroup label="Research">
+                            <option value="field-methods">Field Methods</option>
+                            <option value="experimental-methods">Experimental Methods</option>
+                        </optgroup>
+                        <optgroup label="Logic">
+                            <option value="computing">Computing</option>
+                            <option value="mathematics">Mathematics</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <select id="search-subject-area" class="selectpicker" title="Subject Area"></select>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        <select id="search-subject-area" class="selectpicker" title="Subject Area"></select>
-                    </div>
-
-                    <div class="col-md-6 form-group">
-                        <select id="search-year-level" class="selectpicker" title="Year Level" multiple>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
-                    </div>
+                <div class="col-md-6 form-group">
+                    <select id="search-year-level" class="selectpicker" title="Year Level" multiple>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
                 </div>
+            </div>
 
-                <div class="row">
-                    <div id="more-filters-toggle" class="col-md-12 panel-group">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
+            <div class="row">
+                <div id="more-filters-toggle" class="col-md-12 panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
                                     <a data-parent="#more-filters-toggle" data-toggle="collapse" href="#more-filters">More Filters</a>
                                 </h4>
+                        </div>
+
+                        <div id="more-filters" class="panel-collapse collapse in">
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <select id="search-term" class="selectpicker" title="Term" multiple disabled></select>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <select id="search-times" class="selectpicker" title="Times" multiple disabled></select>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <select id="search-days" class="selectpicker" title="Days" multiple disabled></select>
+                                </div>
                             </div>
 
-                            <div id="more-filters" class="panel-collapse collapse in">
-                                <div class="row">
-                                    <div class="col-md-4 form-group">
-                                        <select id="search-term" class="selectpicker" title="Term" multiple disabled></select>
-                                    </div>
-                                    <div class="col-md-4 form-group">
-                                        <select id="search-times" class="selectpicker" title="Times" multiple disabled></select>
-                                    </div>
-                                    <div class="col-md-4 form-group">
-                                        <select id="search-days" class="selectpicker" title="Days" multiple disabled></select>
-                                    </div>
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <input type="number" id="search-credits" class="form-control" placeholder="Credits" disabled />
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-md-4 form-group">
-                                        <input type="number" id="search-credits" class="form-control" placeholder="Credits" disabled />
-                                    </div>
-                                    <div class="col-md-4 form-group">
-                                        <select id="search-status" class="selectpicker" title="Status" disabled></select>
-                                    </div>
+                                <div class="col-md-4 form-group">
+                                    <select id="search-status" class="selectpicker" title="Status" disabled></select>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-md-12 form-group">
-                        <input type="button" id="search-clear" class="btn btn-default" value="Clear" />
-                        <input type="button" id="search-submit" class="btn btn-default" value="Submit" />
-                    </div>
-                </div>
             </div>
 
-            <div id="results">
-                <h2>Results</h2>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="button" id="search-clear" class="btn btn-default" value="Clear" />
+                    <input type="button" id="search-submit" class="btn btn-default" value="Submit" />
+                </div>
+            </div>
+        </div>
 
-                <span id="initial-message">Use the search menu above to find courses.</span>
-                <span id="no-results-message">No results, please try another search.</span>
+        <div id="results">
+            <h2>Results</h2>
 
-                <div class="table-container">
-                    <table id="results-table" class="table table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Term</th>
-                                <th>Days</th>
-                                <th>Time</th>
-                                <th>Credits</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Name</th>
-                                <th>Term</th>
-                                <th>Days</th>
-                                <th>Time</th>
-                                <th>Credits</th>
-                                <th>Actions</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
+            <span id="initial-message">Use the search menu above to find courses.</span>
+            <span id="no-results-message">No results, please try another search.</span>
+
+            <div class="table-container">
+                <table id="results-table" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Term</th>
+                            <th>Days</th>
+                            <th>Time</th>
+                            <th>Credits</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Term</th>
+                            <th>Days</th>
+                            <th>Time</th>
+                            <th>Credits</th>
+                            <th>Actions</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
                         </toby>
-                    </table>
-                </div>
+                </table>
             </div>
         </div>
+    </div>
 
-        <!-- SKILL PROFILE -->
-        <div id="right" class="col-md-5">
-            <div id="skill-profile" class="col-md-12">
-                <h2>Your Skill Profile</h2>
+    <!-- SKILL PROFILE -->
+    <div id="right" class="col-md-5">
+        <div id="skill-profile" class="col-md-12">
+            <h2>Your Skill Profile</h2>
 
-                <div>
-                    <div id="radar-chart"></div>
-                </div>
-
-                <ul class="nav nav-tabs" data-tabs="tabs">
-                    <li><a id="tab-communication" data-toggle="tab" href="#communication">Communication</a></li>
-                    <li><a id="tab-culture" data-toggle="tab" href="#culture">Culture</a></li>
-                    <li><a id="tab-creativity" data-toggle="tab" href="#creativity">Creativity</a></li>
-                    <li><a id="tab-research" data-toggle="tab" href="#research">Research</a></li>
-                    <li><a id="tab-logic" data-toggle="tab" href="#logic">Logic</a></li>
-                </ul>
-
-                <div class="tab-content">
-                    <div id="communication" class="tab-pane active">
-                        <h4>Writing</h4>
-                        <a for="writing" data-toggle="modal" href="#courses">View courses applied to Writing</a>
-                        <div class="progress"><div id="writing" class="progress-bar"></div></div>
-
-                        <h4>Collaboration</h4>
-                        <a for="collaboration" data-toggle="modal" href="#courses">View courses applied to Collaboration</a>
-                        <div class="progress"><div id="collaboration" class="progress-bar"></div></div>
-                    </div>
-
-                    <div id="culture" class="tab-pane">
-                        <h4>Language</h4>
-                        <a for="language" data-toggle="modal" href="#courses">View courses applied to Language</a>
-                        <div class="progress"><div id="language" class="progress-bar"></div></div>
-
-                        <h4>Ethnic Studies</h4>
-                        <a for="ethnic-studies" data-toggle="modal" href="#courses">View courses applied to Ethnic Studies</a>
-                        <div class="progress"><div id="ethnic-studies" class="progress-bar"></div></div>
-                    </div>
-
-                    <div id="creativity" class="tab-pane">
-                        <h4>Art</h4>
-                        <a for="art" data-toggle="modal" href="#courses">View courses applied to Art</a>
-                        <div class="progress"><div id="art" class="progress-bar"></div></div>
-
-                        <h4>Performance</h4>
-                        <a for="performance" data-toggle="modal" href="#courses">View courses applied to Performance</a>
-                        <div class="progress"><div id="performance" class="progress-bar"></div></div>
-                    </div>
-
-                    <div id="research" class="tab-pane">
-                        <h4>Field Methods</h4>
-                        <a for="field-methods" data-toggle="modal" href="#courses">View courses applied to Field Methods</a>
-                        <div class="progress"><div id="field-methods" class="progress-bar"></div></div>
-
-                        <h4>Experimental Methods</h4>
-                        <a for="experimental-methods" data-toggle="modal" href="#courses">View courses applied to Experimental Methods</a>
-                        <div class="progress"><div id="experimental-methods" class="progress-bar"></div></div>
-                    </div>
-
-                    <div id="logic" class="tab-pane">
-                        <h4>Computing</h4>
-                        <a for="computing" data-toggle="modal" href="#courses">View courses applied to Computing</a>
-                        <div class="progress"><div id="computing" class="progress-bar"></div></div>
-
-                        <h4>Mathematics</h4>
-                        <a for="mathematics" data-toggle="modal" href="#courses">View courses applied to Mathematics</a>
-                        <div class="progress"><div id="mathematics" class="progress-bar"></div></div>
-                    </div>
-                </div>
+            <div>
+                <div id="radar-chart"></div>
             </div>
-        </div>
 
-        <!-- COURSE LIST -->
-        <div id="courses" class="modal fade" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button class="close" data-dismiss="modal"><span>&times;</span></button>
-                        <h4 class="modal-title">Courses Applied to <span id="courses-title"></span></h4>
+            <ul class="nav nav-tabs" data-tabs="tabs">
+                <li><a id="tab-communication" data-toggle="tab" href="#communication">Communication</a></li>
+                <li><a id="tab-culture" data-toggle="tab" href="#culture">Culture</a></li>
+                <li><a id="tab-creativity" data-toggle="tab" href="#creativity">Creativity</a></li>
+                <li><a id="tab-research" data-toggle="tab" href="#research">Research</a></li>
+                <li><a id="tab-logic" data-toggle="tab" href="#logic">Logic</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="communication" class="tab-pane active">
+                    <h4>Writing</h4>
+                    <a for="writing" data-toggle="modal" href="#courses">View courses applied to Writing</a>
+                    <div class="progress">
+                        <div id="writing" class="progress-bar"></div>
                     </div>
 
-                    <div class="modal-body courses-body" id="courses-writing"><ul></ul></div>
-                    <div class="modal-body courses-body" id="courses-collaboration"><ul></ul></div>
-                    <div class="modal-body courses-body" id="courses-language"><ul></ul></div>
-                    <div class="modal-body courses-body" id="courses-ethnic-studies"><ul></ul></div>
-                    <div class="modal-body courses-body" id="courses-art"><ul></ul></div>
-                    <div class="modal-body courses-body" id="courses-performance"><ul></ul></div>
-                    <div class="modal-body courses-body" id="courses-field-methods"><ul></ul></div>
-                    <div class="modal-body courses-body" id="courses-experimental-methods"><ul></ul></div>
-                    <div class="modal-body courses-body" id="courses-computing"><ul></ul></div>
-                    <div class="modal-body courses-body" id="courses-mathematics"><ul></ul></div>
+                    <h4>Collaboration</h4>
+                    <a for="collaboration" data-toggle="modal" href="#courses">View courses applied to Collaboration</a>
+                    <div class="progress">
+                        <div id="collaboration" class="progress-bar"></div>
+                    </div>
+                </div>
 
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                <div id="culture" class="tab-pane">
+                    <h4>Language</h4>
+                    <a for="language" data-toggle="modal" href="#courses">View courses applied to Language</a>
+                    <div class="progress">
+                        <div id="language" class="progress-bar"></div>
+                    </div>
+
+                    <h4>Ethnic Studies</h4>
+                    <a for="ethnic-studies" data-toggle="modal" href="#courses">View courses applied to Ethnic Studies</a>
+                    <div class="progress">
+                        <div id="ethnic-studies" class="progress-bar"></div>
+                    </div>
+                </div>
+
+                <div id="creativity" class="tab-pane">
+                    <h4>Art</h4>
+                    <a for="art" data-toggle="modal" href="#courses">View courses applied to Art</a>
+                    <div class="progress">
+                        <div id="art" class="progress-bar"></div>
+                    </div>
+
+                    <h4>Performance</h4>
+                    <a for="performance" data-toggle="modal" href="#courses">View courses applied to Performance</a>
+                    <div class="progress">
+                        <div id="performance" class="progress-bar"></div>
+                    </div>
+                </div>
+
+                <div id="research" class="tab-pane">
+                    <h4>Field Methods</h4>
+                    <a for="field-methods" data-toggle="modal" href="#courses">View courses applied to Field Methods</a>
+                    <div class="progress">
+                        <div id="field-methods" class="progress-bar"></div>
+                    </div>
+
+                    <h4>Experimental Methods</h4>
+                    <a for="experimental-methods" data-toggle="modal" href="#courses">View courses applied to Experimental Methods</a>
+                    <div class="progress">
+                        <div id="experimental-methods" class="progress-bar"></div>
+                    </div>
+                </div>
+
+                <div id="logic" class="tab-pane">
+                    <h4>Computing</h4>
+                    <a for="computing" data-toggle="modal" href="#courses">View courses applied to Computing</a>
+                    <div class="progress">
+                        <div id="computing" class="progress-bar"></div>
+                    </div>
+
+                    <h4>Mathematics</h4>
+                    <a for="mathematics" data-toggle="modal" href="#courses">View courses applied to Mathematics</a>
+                    <div class="progress">
+                        <div id="mathematics" class="progress-bar"></div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- CONFIRMATION -->
-        <div id="confirmation" class="modal fade" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button class="close" data-dismiss="modal"><span>&times;</span></button>
-                        <h4 class="modal-title">Success!</h4>
-                    </div>
+    <!-- COURSE LIST -->
+    <div id="courses" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <h4 class="modal-title">Courses Applied to <span id="courses-title"></span></h4>
+                </div>
 
-                    <div id="confirmation-body" class="modal-body"></div>
+                <div class="modal-body courses-body" id="courses-writing">
+                    <ul></ul>
+                </div>
+                <div class="modal-body courses-body" id="courses-collaboration">
+                    <ul></ul>
+                </div>
+                <div class="modal-body courses-body" id="courses-language">
+                    <ul></ul>
+                </div>
+                <div class="modal-body courses-body" id="courses-ethnic-studies">
+                    <ul></ul>
+                </div>
+                <div class="modal-body courses-body" id="courses-art">
+                    <ul></ul>
+                </div>
+                <div class="modal-body courses-body" id="courses-performance">
+                    <ul></ul>
+                </div>
+                <div class="modal-body courses-body" id="courses-field-methods">
+                    <ul></ul>
+                </div>
+                <div class="modal-body courses-body" id="courses-experimental-methods">
+                    <ul></ul>
+                </div>
+                <div class="modal-body courses-body" id="courses-computing">
+                    <ul></ul>
+                </div>
+                <div class="modal-body courses-body" id="courses-mathematics">
+                    <ul></ul>
+                </div>
 
-                    <div class="modal-footer">
-                        <span class="undo-message">Added this course by mistake? <a id="undo-add-course">Click here to remove it!</a></span>
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
-                    </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- JS -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
-        <script src="http://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
-        <script src="http://d3js.org/d3.v3.min.js"></script>
-        <script src="js/radar-chart.js"></script>
-        <script src="js/var.js"></script>
-        <script src="js/electives-explorer.js"></script>
-    </body>
+    <!-- CONFIRMATION -->
+    <div id="confirmation" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <h4 class="modal-title">Success!</h4>
+                </div>
+
+                <div id="confirmation-body" class="modal-body"></div>
+
+                <div class="modal-footer">
+                    <span class="undo-message">Added this course by mistake? <a id="undo-add-course">Click here to remove it!</a></span>
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+    <script src="http://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="js/radar-chart.js"></script>
+    <script src="js/var.js"></script>
+    <script src="js/electives-explorer.js"></script>
+</body>
+
 </html>
