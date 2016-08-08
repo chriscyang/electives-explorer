@@ -2,7 +2,7 @@
 // UI
 // -----------------------------------------------------------------------------
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     // -------------------------------------------------------------------------
     // INITIALIZATIONS: SEARCH & RESULTS
@@ -39,11 +39,11 @@ $(document).ready(function() {
     // EVENTS: SEARCH & RESULTS
     // -------------------------------------------------------------------------
 
-    $("#search-clear").click(function() {
+    $("#search-clear").click(function () {
         $(".selectpicker").selectpicker("deselectAll");
     });
 
-    $("#search-submit").click(function() {
+    $("#search-submit").click(function () {
         var subj = $("#search-subject-area").val();
         var year = $("#search-year-level").val();
         var skills = $("#search-skills").val();
@@ -59,13 +59,13 @@ $(document).ready(function() {
     // EVENTS: SKILL PROFILE
     // -------------------------------------------------------------------------
 
-    $("a[href='#courses']").click(function() {
+    $("a[href='#courses']").click(function () {
         var skill = $(this).attr("for");
         $("#courses-title").html(toTitleCase(skill));
         $("#courses-" + skill).show();
     });
 
-    $("#courses").on("hidden.bs.modal", function() {
+    $("#courses").on("hidden.bs.modal", function () {
         $(".courses-body").hide();
     });
 
@@ -73,7 +73,7 @@ $(document).ready(function() {
     // EVENTS: CONFIRMATION
     // -------------------------------------------------------------------------
 
-    $("#undo-add-course").click(function() {
+    $("#undo-add-course").click(function () {
         undoAddCourse();
     });
 });
@@ -105,7 +105,7 @@ var chartConfig = {
     maxValue    : 0.6,
     levels      : 5,
     ExtraWidthX : 300,
-}
+};
 
 // Actual values for axes are kept here.
 var data = [
@@ -163,7 +163,7 @@ function initSkillProfile() {
     initPreviewVals();
 
     // Reset progress bars.
-    $.each($(".progress-bar"), function() {
+    $.each($(".progress-bar"), function () {
         $(this).attr("aria-valuenow", 0);
         $(this).css("width", "0%");
     });
@@ -189,7 +189,7 @@ function initSkillProfile() {
     }
 
     // Indicate if a course list is empty.
-    $.each($(".courses-body"), function() {
+    $.each($(".courses-body"), function () {
         if (!$(this).find("ul").text()) {
             $(this).find("ul").append("<li>No courses applied to this skill.</li>");
         }
@@ -388,7 +388,7 @@ function previewSkillProfile(course) {
 
     var skills = courseSkills[course];
 
-    $.each(skills, function(skill, points) {
+    $.each(skills, function (skill, points) {
         updateVals(skill, points, "pre");
 
         $("#tab-" + skillGroups[skill]).addClass("previewing");
@@ -465,7 +465,7 @@ function updateVals(skill, val, prefix) {
  */
 function toTitleCase(string) {
     return string.replace(/-/g, " ")
-                 .replace(/\w\S*/g, function(x) {
+                 .replace(/\w\S*/g, function (x) {
                     return x.charAt(0).toUpperCase() + x.substr(1).toLowerCase();
                  });
 }
