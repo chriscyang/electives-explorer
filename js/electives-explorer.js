@@ -258,7 +258,7 @@ function search(searchSubj, searchYear, searchSkills) {
 
         // Match subject area.
         if (searchSubj) {
-            if (course["subj"] != searchSubj) {
+            if (course["subj"] !== searchSubj) {
                 continue;
             }
         }
