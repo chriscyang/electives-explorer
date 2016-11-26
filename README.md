@@ -1,6 +1,6 @@
 # Electives Explorer
 
-This was a medium-fidelity prototype created for CPSC 344 (Introduction to HCI Methods) during the 2015W1 session at the University of British Columbia.
+This is a medium-fidelity prototype created for CPSC 344 (Introduction to HCI Methods) during the 2015W1 session at the University of British Columbia.
 
 ## Team
 
